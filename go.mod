@@ -1,4 +1,4 @@
-module entgo.io/contrib
+module github.com/NichijouCC/contrib
 
 go 1.21
 
