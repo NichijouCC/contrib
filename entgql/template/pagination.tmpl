@@ -648,6 +648,12 @@ func ({{ $r }} *{{ $name }}) ToEdge(order *{{ $order }}) *{{ $edge }} {
 	if {{ $r }}, err = pager.applyCursors({{ $r }}, after, before); err != nil {
 		return nil, err
 	}
+	if offset != nil && *offset != 0 {
+	    {{ $r }}.Offset(*offset)
+	}
+    if limit != nil && *limit != 0 {
+        {{ $r }}.Limit(*limit)
+    }
 	limit := paginateLimit(first, last)
 	if limit != 0 {
 		{{ $r }}.Limit(limit)
