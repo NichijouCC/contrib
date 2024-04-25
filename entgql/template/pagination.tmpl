@@ -460,8 +460,10 @@ func (p *{{ $pager }}) orderExpr(query *{{ $node.QueryName }}) sql.Querier {
 
 // Paginate executes the query and returns a relay based cursor connection to {{ $name }}.
 func ({{ $r }} *{{ $query }}) Paginate(
-	ctx context.Context, after *Cursor, first *int,
-	before *Cursor, last *int, opts ...{{ $opt }},
+	ctx context.Context,
+	after *Cursor, first *int,before *Cursor, last *int,
+	offset *int, limit *int,
+	opts ...{{ $opt }},
 ) (*{{ $conn }}, error) {
 	{{- with extend $ "Node" $node "Query" $r -}}
 		{{ template "gql_pagination/helper/paginate" . }}
